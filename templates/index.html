@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Downloader</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Image Downloader</h1>
+    </header>
+
+    <main>
+        <section class="image-downloader">
+            <h2>Download Images</h2>
+            <form id="downloadForm">
+                <label for="keyword">Keyword:</label>
+                <input type="text" id="keyword" name="keyword" placeholder="Enter keyword" required>
+                
+                <label for="num_images">Number of Images:</label>
+                <input type="number" id="num_images" name="num_images" placeholder="Enter number of images (max 100)" min="1" required>
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                
+                <button type="submit">Download Images</button>
+            </form>
+            <div id="result">
+                <div id="waitingMessage" style="display:none;">Downloading images, please wait...</div>
+                <a id="downloadLink" style="display:none;">Download Zip</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Your Company. All rights reserved.</p>
+    </footer>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
