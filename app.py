@@ -1,28 +1,32 @@
-#GOOGLE IMAGE DOWNLOADER
 from flask import Flask, request, jsonify, render_template
-from flask_cors import CORS # type: ignore
-from flask_mail import Mail, Message # type: ignore
-from googleapiclient.discovery import build # type: ignore
-import requests # type: ignore
+from flask_cors import CORS  # type: ignore
+from flask_mail import Mail, Message  # type: ignore
+from googleapiclient.discovery import build  # type: ignore
+import requests  # type: ignore
 import os
 import zipfile
 import io
 import shutil
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
-app.config['MAIL_SERVER'] = 'smtp.gmail.com' 
-app.config['MAIL_PORT'] = 587 
+# Get secrets from environment variables
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'igenerator57@gmail.com' 
-app.config['MAIL_PASSWORD'] = 'zfuvwfmfmlsdlxdz' 
-app.config['MAIL_DEFAULT_SENDER'] = 'igenerator57@gmail.com' 
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')  # Fetch from .env
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')  # Fetch from .env
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_USERNAME')  # Fetch from .env
 mail = Mail(app)
 
 OUTPUT_DIR = os.path.join('static', 'dataset')
-API_KEY = 'AIzaSyARzrGr8KUgjWLIXxa4zi__X9ZJi4d1z0s'
-SEARCH_ENGINE_ID = '502148e05091448ce'
+API_KEY = os.getenv('API_KEY')  # Fetch from .env
+SEARCH_ENGINE_ID = os.getenv('SEARCH_ENGINE_ID')  # Fetch from .env
 
 def google_image_downloader(keyword, num_images, output_dir):
     service = build("customsearch", "v1", developerKey=API_KEY)
