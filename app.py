@@ -1,9 +1,9 @@
 #GOOGLE IMAGE DOWNLOADER
 from flask import Flask, request, jsonify, render_template
-from flask_cors import CORS
-from flask_mail import Mail, Message
-from googleapiclient.discovery import build
-import requests
+from flask_cors import CORS # type: ignore
+from flask_mail import Mail, Message # type: ignore
+from googleapiclient.discovery import build # type: ignore
+import requests # type: ignore
 import os
 import zipfile
 import io
