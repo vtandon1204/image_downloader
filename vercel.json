@@ -1,0 +1,16 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "api/app.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "env": {
+      "MAIL_USERNAME": "@mail_username",
+      "MAIL_PASSWORD": "@mail_password",
+      "API_KEY": "@api_key",
+      "SEARCH_ENGINE_ID": "@search_engine_id"
+    }
+  }
+  
